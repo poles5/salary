@@ -1,0 +1,17 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+}
+
+.card {
+    background: #ffffff;
+    border: none;
+}
+
+h1 {
+    letter-spacing: 1px;
+}
+
+#salary {
+    font-size: 1.8rem;
+    color: #198754;
+}
