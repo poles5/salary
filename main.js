@@ -7,11 +7,17 @@ let salary_num = 0
 // Универсальная функция анимации числа
 function animateValue(element, start, end, duration, prefix = "", suffix = "") {
     let startTimestamp = null
+    let lastJackpot = 0
+
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp
         const progress = Math.min((timestamp - startTimestamp) / duration, 1)
         const value = Math.floor(progress * (end - start) + start)
         element.innerHTML = `${prefix}${value.toLocaleString("ru-RU")} ${suffix}`
+
+        // 🎰 Проверка на джекпот (каждые 30000 ₽)
+        
+
         if (progress < 1) {
             requestAnimationFrame(step)
         }
@@ -19,14 +25,15 @@ function animateValue(element, start, end, duration, prefix = "", suffix = "") {
     requestAnimationFrame(step)
 }
 
+
 button.addEventListener("click", () => {
     if (di.value.length > 0) {
         di.style.borderColor = 'green'
-        salary_num += (parseInt(di.value) / 100) * 98000
+        salary_num += (parseInt(di.value) / 100) * 91350
 
         if (mbo.value.length > 0) {
             mbo.style.borderColor = 'green'
-            salary_num += (parseInt(mbo.value) / 100) * 45000 + 45000
+            salary_num += (parseInt(mbo.value) / 100) * 45675 + 45675
 
             // Очищаем блок и перезапускаем анимацию появления
             salary_html.classList.remove("animate-salary")
@@ -56,3 +63,7 @@ button.addEventListener("click", () => {
         di.style.borderColor = 'red'
     }
 })
+
+
+
+
