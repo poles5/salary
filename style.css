@@ -1,7 +1,9 @@
-/* Общий стиль */
+/* Фон */
 body {
     font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    background: linear-gradient(135deg, #6EE7B7, #3B82F6, #ff4400);
+    background-size: 300% 300%;
+    animation: gradientShift 15s ease infinite;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -11,66 +13,77 @@ body {
 
 /* Карточка */
 .card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9);
     border: none;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     animation: fadeIn 0.8s ease forwards;
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
 }
 
 /* Заголовок */
 h1 {
     letter-spacing: 1px;
-    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 1px 3px 6px rgba(0,0,0,0.15);
     animation: slideDown 0.8s ease;
+    font-weight: 700;
 }
 
 /* Поля ввода */
 .form-control {
-    border-radius: 12px;
+    border-radius: 15px;
     border: 2px solid #ddd;
     transition: all 0.3s ease;
-    padding: 12px 15px;
+    padding: 14px 16px;
     font-size: 1rem;
 }
 
 .form-control:focus {
-    border-color: #198754;
-    box-shadow: 0 0 10px rgba(25,135,84,0.4);
+    border-color: #6366F1;
+    box-shadow: 0 0 15px rgba(99,102,241,0.5);
 }
 
 /* Кнопка */
 #button {
     border-radius: 50px;
-    padding: 12px 40px;
-    font-size: 1.1rem;
+    padding: 14px 45px;
+    font-size: 1.2rem;
     font-weight: 600;
     transition: all 0.3s ease;
+    background: linear-gradient(135deg, #10B981, #3B82F6);
+    border: none;
 }
 
 #button:hover {
-    transform: scale(1.05);
-    background: #157347 !important;
-    box-shadow: 0 8px 20px rgba(21,115,71,0.5);
+    transform: scale(1.08) rotate(-1deg);
+    background: linear-gradient(135deg, #3B82F6, #9333EA);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.5);
 }
 
 /* Блок с зарплатой */
 #salary {
-    font-size: 1.6rem;
-    color: #198754;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.5s;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #10B981, #3B82F6, #9333EA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 15px rgba(59,130,246,0.4);
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Анимации */
+/* Анимация появления зарплаты */
+.animate-salary {
+    animation: popUp 1.9s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+/* ---- Ключевые кадры ---- */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
@@ -81,7 +94,24 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes popUp {
+    0% { opacity: 0; transform: scale(0.5) translateY(30px); }
+    60% { opacity: 1; transform: scale(1.1) translateY(-5px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+#salary div {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #10B981, #3B82F6, #9333EA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 15px rgba(59,130,246,0.4);
+    animation: fadeUp 0.8s ease forwards;
 }
