@@ -1,17 +1,87 @@
+/* Общий стиль */
 body {
     font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* Карточка */
 .card {
     background: #ffffff;
     border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease forwards;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Заголовок */
 h1 {
     letter-spacing: 1px;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    animation: slideDown 0.8s ease;
 }
 
+/* Поля ввода */
+.form-control {
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+    padding: 12px 15px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 10px rgba(25,135,84,0.4);
+}
+
+/* Кнопка */
+#button {
+    border-radius: 50px;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#button:hover {
+    transform: scale(1.05);
+    background: #157347 !important;
+    box-shadow: 0 8px 20px rgba(21,115,71,0.5);
+}
+
+/* Блок с зарплатой */
 #salary {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #198754;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
